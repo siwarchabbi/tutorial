@@ -1,0 +1,26 @@
+<h2>Editer le livre </h2>
+<form #f="ngForm" (ngSubmit)="editBook(f)">
+  <div class="mb-3">
+    <label for="titre" class="form-label">Titre</label>
+    <input
+      type="text"
+      class="form-control"
+      id="titre"
+      name="titre"
+      ngModel
+      #titre="ngModel"
+      [(ngModel)]="book.titre"
+      required>
+    <span class="errorMessage" *ngIf="titre.invalid && titre.touched">Le champ est obligatoire</span>
+  </div>
+  <div class="mb-3">
+    <label for="auteur" class="form-label">Auteur</label>
+    <input type="text" class="form-control" id="auteur" name="auteur" ngModel #auteur="ngModel" [(ngModel)]="book.auteur" required>
+    <span class="errorMessage" *ngIf="auteur.invalid && auteur.touched">Le champ est obligatoire</span>
+  </div>
+  <div class="mb-3">
+    <label for="prix" class="form-label">Prix</label>
+    <input type="text" class="form-control" id="prix" name="prix" ngModel [(ngModel)]="book.prix" #prix>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="f.invalid" >Valider</button>
+</form>
